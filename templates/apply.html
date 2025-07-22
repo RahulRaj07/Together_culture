@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply for Membership</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="header">
+    Together Culture
+    <a style="float:right; color:white;" href="{% url 'login' %}"><button>Login</button></a>
+</div>
+
+<div class="membership-container">
+    <h2>Apply for Membership</h2>
+
+    <form method="post">
+    {% csrf_token %}
+
+    <h3>Personal Information</h3>
+    {{ form.first_name.label }} {{ form.first_name }}
+    {{ form.last_name.label }} {{ form.last_name }}
+    {{ form.email.label }} {{ form.email }}
+    {{ form.phone_number.label }} {{ form.phone_number }}
+    {{ form.location.label }} {{ form.location }}
+
+    <h3>Your Interests</h3>
+    <div class="interest-grid">
+        {% for checkbox in form.interests %}
+            <label class="checkbox-label">{{ checkbox }}</label>
+        {% endfor %}
+    </div>
+
+    <h3>Tell Us About Yourself</h3>
+    {{ form.professional_background.label }} {{ form.professional_background }}
+    {{ form.why_join.label }} {{ form.why_join }}
+    {{ form.how_contribute.label }} {{ form.how_contribute }}
+
+    <div style="margin-top: 10px;">
+        {{ form.agree_terms }} I agree to the Terms of Service and Privacy Policy
+    </div>
+
+    <input type="submit" value="Submit Application">
+</form>
+
+</div>
+
+<div class="footer">Together Culture</div>
+
+</body>
+</html>

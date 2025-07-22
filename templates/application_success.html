@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application Submitted | Together Culture</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="header">Together Culture</div>
+
+<div class="login-container">
+    <h2>Application Submitted</h2>
+    <p style="text-align: center; margin-bottom: 1.5rem;">
+        Thank you for applying to become a member of Together Culture.<br>
+        Your application has been submitted successfully and is pending approval.
+    </p>
+
+    <div style="text-align: center;">
+        <a href="{% url 'login' %}">
+            <button>Return to Login</button>
+        </a>
+    </div>
+</div>
+
+<div class="footer">
+    Together Culture<br>
+    <small>Building a more equitable and ecological economy</small>
+</div>
+
+</body>
+</html>

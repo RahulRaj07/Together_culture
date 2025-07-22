@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard | Together Culture</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="header">Admin Dashboard - Together Culture</div>
+
+<div class="membership-container">
+    <h2>All Member Applications</h2>
+
+    <div style="margin-bottom: 20px;">
+        <strong>Filter:</strong>
+        <a href="{% url 'admin_home' %}">All</a> |
+        <a href="?status=approved">Approved</a> |
+        <a href="?status=pending">Pending</a>
+    </div>
+
+    <form method="get" style="margin-bottom: 20px;">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search by name or email">
+        <button type="submit">Search</button>
+    </form>
+
+    <table style="width:100%; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #eee;">
+                <th style="padding: 10px; border: 1px solid #ccc;">Name</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">Email</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">Phone</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">Approved</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for member in members %}
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ccc;">{{ member.first_name }} {{ member.last_name }}</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">
+                    <a href="#" onclick="fetchDetails({{ member.id }}); return false;">
+                        {{ member.email }}
+                    </a>
+                </td>
+                <td style="padding: 10px; border: 1px solid #ccc;">{{ member.phone_number }}</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">
+                    {% if member.is_approved %} ✅ {% else %} ❌ {% endif %}
+                </td>
+                <td style="padding: 10px; border: 1px solid #ccc;">
+                    <a href="{% url 'approve_member' member.id %}">
+                        {% if member.is_approved %}Revoke{% else %}Approve{% endif %}
+                    </a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5" style="text-align:center;">No members found.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Member Detail Modal -->
+<div id="userModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
+    <div style="background:#fff; padding:20px; width:500px; margin:10% auto; border-radius:10px; position:relative;">
+        <h2>Member Details</h2>
+        <div id="modalContent">
+            <p><strong>Name:</strong> <span id="m_name"></span></p>
+            <p><strong>Email:</strong> <span id="m_email"></span></p>
+            <p><strong>Phone:</strong> <span id="m_phone"></span></p>
+            <p><strong>Location:</strong> <span id="m_location"></span></p>
+            <p><strong>Interests:</strong> <span id="m_interests"></span></p>
+            <p><strong>Background:</strong> <span id="m_background"></span></p>
+            <p><strong>Why Join:</strong> <span id="m_why"></span></p>
+            <p><strong>Contribute:</strong> <span id="m_contribute"></span></p>
+            <p><strong>Approved:</strong> <span id="m_approved"></span></p>
+        </div>
+        <button onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<div class="footer">Together Culture</div>
+
+<script>
+function fetchDetails(memberId) {
+    fetch(`/member-details/${memberId}/`)
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("m_name").innerText = data.name;
+        document.getElementById("m_email").innerText = data.email;
+        document.getElementById("m_phone").innerText = data.phone;
+        document.getElementById("m_location").innerText = data.location;
+        document.getElementById("m_interests").innerText = data.interests.join(', ');
+        document.getElementById("m_background").innerText = data.background || 'N/A';
+        document.getElementById("m_why").innerText = data.why_join || 'N/A';
+        document.getElementById("m_contribute").innerText = data.how_contribute || 'N/A';
+        document.getElementById("m_approved").innerText = data.approved ? "Yes" : "No";
+
+        document.getElementById("userModal").style.display = "block";
+    });
+}
+
+function closeModal() {
+    document.getElementById("userModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>

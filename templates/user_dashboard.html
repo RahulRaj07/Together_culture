@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Member Dashboard | Together Culture</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="header">
+    Member Dashboard - Together Culture
+</div>
+
+<div class="membership-container" style="text-align:center;">
+    <h2>Welcome, {{ request.user.first_name }}!</h2>
+    <p style="margin-top: 2rem; font-size: 1.2rem;">
+        🚧 This area is still under construction.
+    </p>
+    <p style="font-weight: bold; margin-top: 1rem;">
+        ✨ Your member dashboard is coming soon. Stay tuned!
+    </p>
+</div>
+
+<div class="footer">
+    Together Culture
+</div>
+
+</body>
+</html>

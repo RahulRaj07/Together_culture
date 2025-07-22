@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | Together Culture</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="header">Together Culture</div>
+
+<div class="login-container">
+    <h2>WELCOME TO TOGETHER CULTURE</h2>
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <label for="username">EMAIL ADDRESS</label>
+        <input type="text" name="username" placeholder="Please enter email address" required>
+
+        <label for="password">PASSWORD</label>
+        <input type="password" name="password" placeholder="Please enter password" required>
+
+        <div class="action-bar">
+            <a href="#">FORGOT PASSWORD</a>
+            <input type="submit" value="LOGIN NOW">
+        </div>
+    </form>
+
+    <div class="action-bar">
+        <span>Not a Member Yet?</span>
+        <a href="{% url 'apply' %}">
+            <button>Apply for Membership</button>
+        </a>
+    </div>
+</div>
+
+<div class="footer">
+    Together Culture<br>
+    <small>Building a more equitable and ecological economy</small>
+</div>
+
+</body>
+</html>
