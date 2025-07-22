@@ -7,7 +7,13 @@
 </head>
 <body>
 
-<div class="header">Admin Dashboard - Together Culture</div>
+<div class="header">
+    Together Culture
+    <a style="float:right; color:white;" href="{% url 'login' %}">
+        <button>Logout</button>
+    </a>
+</div>
+
 
 <div class="membership-container">
     <h2>All Member Applications</h2>
@@ -62,23 +68,23 @@
     </table>
 </div>
 
-<!-- Member Detail Modal -->
+<!-- Modal -->
 <div id="userModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
-    <div style="background:#fff; padding:20px; width:500px; margin:10% auto; border-radius:10px; position:relative;">
-        <h2>Member Details</h2>
-        <div id="modalContent">
-            <p><strong>Name:</strong> <span id="m_name"></span></p>
-            <p><strong>Email:</strong> <span id="m_email"></span></p>
-            <p><strong>Phone:</strong> <span id="m_phone"></span></p>
-            <p><strong>Location:</strong> <span id="m_location"></span></p>
-            <p><strong>Interests:</strong> <span id="m_interests"></span></p>
-            <p><strong>Background:</strong> <span id="m_background"></span></p>
-            <p><strong>Why Join:</strong> <span id="m_why"></span></p>
-            <p><strong>Contribute:</strong> <span id="m_contribute"></span></p>
-            <p><strong>Approved:</strong> <span id="m_approved"></span></p>
-        </div>
-        <button onclick="closeModal()">Close</button>
+  <div style="background:#fff; padding:20px; width:500px; margin:10% auto; border-radius:10px; position:relative;">
+    <h2>Member Details</h2>
+    <div id="modalContent">
+        <p><strong>Name:</strong> <span id="m_name"></span></p>
+        <p><strong>Email:</strong> <span id="m_email"></span></p>
+        <p><strong>Phone:</strong> <span id="m_phone"></span></p>
+        <p><strong>Location:</strong> <span id="m_location"></span></p>
+        <p><strong>Interests:</strong> <span id="m_interests"></span></p>
+        <p><strong>Background:</strong> <span id="m_background"></span></p>
+        <p><strong>Why Join:</strong> <span id="m_why"></span></p>
+        <p><strong>Contribute:</strong> <span id="m_contribute"></span></p>
+        <p><strong>Approved:</strong> <span id="m_approved"></span></p>
     </div>
+    <button onclick="closeModal()">Close</button>
+  </div>
 </div>
 
 <div class="footer">Together Culture</div>
