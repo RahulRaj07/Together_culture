@@ -3,50 +3,66 @@
 <html>
 <head>
     <title>Apply for Membership</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
+<body style="margin: 0; font-family: Arial, sans-serif; display: flex; flex-direction: column; min-height: 100vh; background-color: #f5f9fc;">
 
-<div class="header">
-    Together Culture
-    <a style="float:right; color:white;" href="{% url 'login' %}"><button>Login</button></a>
-</div>
-
-<div class="membership-container">
-    <h2>Apply for Membership</h2>
-
-    <form method="post">
-    {% csrf_token %}
-
-    <h3>Personal Information</h3>
-    {{ form.first_name.label }} {{ form.first_name }}
-    {{ form.last_name.label }} {{ form.last_name }}
-    {{ form.email.label }} {{ form.email }}
-    {{ form.phone_number.label }} {{ form.phone_number }}
-    {{ form.location.label }} {{ form.location }}
-
-    <h3>Your Interests</h3>
-    <div class="interest-grid">
-        {% for checkbox in form.interests %}
-            <label class="checkbox-label">{{ checkbox }}</label>
-        {% endfor %}
+    <!-- Header -->
+    <div style="background-color: #1a1a1a; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-weight: bold; font-size: 18px;">Together Culture</div>
+        <div>
+            <a href="{% url 'login' %}" style="text-decoration: none;">
+                <button style="padding: 8px 16px; background-color: #007bff; color: white; border: none; border-radius: 5px;">Login</button>
+            </a>
+        </div>
     </div>
 
-    <h3>Tell Us About Yourself</h3>
-    {{ form.professional_background.label }} {{ form.professional_background }}
-    {{ form.why_join.label }} {{ form.why_join }}
-    {{ form.how_contribute.label }} {{ form.how_contribute }}
+    <!-- Form Container -->
+    <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; padding: 40px;">
+        <div style="width: 100%; max-width: 700px; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            <h2 style="color: #084c61; text-align: center;">Apply for Membership</h2>
 
-    <div style="margin-top: 10px;">
-        {{ form.agree_terms }} I agree to the Terms of Service and Privacy Policy
+            <form method="post">
+                {% csrf_token %}
+
+                <h3 style="color: #084c61;">Personal Information</h3>
+                <div style="margin-bottom: 15px;">
+                    <div style="margin-bottom: 10px;">{{ form.first_name.label }}<br>{{ form.first_name }}</div>
+                    <div style="margin-bottom: 10px;">{{ form.last_name.label }}<br>{{ form.last_name }}</div>
+                    <div style="margin-bottom: 10px;">{{ form.email.label }}<br>{{ form.email }}</div>
+                    <div style="margin-bottom: 10px;">{{ form.phone_number.label }}<br>{{ form.phone_number }}</div>
+                    <div style="margin-bottom: 10px;">{{ form.location.label }}<br>{{ form.location }}</div>
+                </div>
+
+                <h3 style="color: #084c61;">Your Interests</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+                    {% for checkbox in form.interests %}
+                        <label style="display: flex; align-items: center; gap: 5px;">{{ checkbox }}</label>
+                    {% endfor %}
+                </div>
+
+                <h3 style="color: #084c61;">Tell Us About Yourself</h3>
+                <div style="margin-bottom: 15px;">
+                    <div style="margin-bottom: 10px;">{{ form.professional_background.label }}<br>{{ form.professional_background }}</div>
+                    <div style="margin-bottom: 10px;">{{ form.why_join.label }}<br>{{ form.why_join }}</div>
+                    <div style="margin-bottom: 10px;">{{ form.how_contribute.label }}<br>{{ form.how_contribute }}</div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="font-size: 14px;">{{ form.agree_terms }} I agree to the Terms of Service and Privacy Policy</label>
+                </div>
+
+                <div style="text-align: center;">
+                    <input type="submit" value="Submit Application"
+                           style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                </div>
+            </form>
+        </div>
     </div>
 
-    <input type="submit" value="Submit Application">
-</form>
-
-</div>
-
-<div class="footer">Together Culture</div>
+    <!-- Footer -->
+    <div style="text-align: center; padding: 12px; background-color: #e2edf3; color: #333;">
+        © 2025 Together Culture. All rights reserved.
+    </div>
 
 </body>
 </html>

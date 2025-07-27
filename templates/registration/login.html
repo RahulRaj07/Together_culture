@@ -3,16 +3,62 @@
 <html>
 <head>
     <title>Login | Together Culture</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-<div class="membership-container">
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-</div>
+<body style="margin: 0; font-family: Arial, sans-serif; display: flex; flex-direction: column; min-height: 100vh; background-color: #f5f9fc;">
+
+    <!-- Header -->
+    <div style="background-color: #1a1a1a; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-weight: bold; font-size: 18px;">Together Culture</div>
+        <div>
+            <a href="{% url 'apply' %}" style="margin-right: 10px; text-decoration: none;">
+                <button style="padding: 8px 16px; background-color: #28a745; color: white; border: none; border-radius: 5px;">Apply</button>
+            </a>
+            <a href="{% url 'login' %}" style="text-decoration: none;">
+                <button style="padding: 8px 16px; background-color: #007bff; color: white; border: none; border-radius: 5px;">Login</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Section -->
+    <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center;">
+        <h1 style="font-size: 36px; margin-bottom: 10px; color: #084c61;">Building a More Equitable & Ecological Creative Economy</h1>
+        <p style="font-size: 16px; max-width: 600px; margin-bottom: 30px; color: #333;">
+            Together Culture brings people together to create change through leadership, collaboration, and shared values.
+        </p>
+
+        <!-- Login Form -->
+        <form method="post" action="{% url 'login' %}" style="width: 100%; max-width: 400px; text-align: left; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            {% csrf_token %}
+            <label for="username" style="display: block; margin-bottom: 5px; font-weight: bold; color: #084c61;">Email Address</label>
+            <input type="text" name="username" placeholder="Please enter email address" required
+                   style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+
+            <label for="password" style="display: block; margin-bottom: 5px; font-weight: bold; color: #084c61;">Password</label>
+            <input type="password" name="password" placeholder="Please enter password" required
+                   style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <a href="#" style="font-size: 14px; text-decoration: none; color: #007bff;">Forgot Password?</a>
+                <input type="submit" value="Login Now"
+                       style="padding: 10px 20px; background-color: #222; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            </div>
+        </form>
+
+        <!-- Apply CTA -->
+        <div style="margin-top: 25px;">
+            <span style="margin-right: 10px; color: #444;">Not a Member Yet?</span>
+            <a href="{% url 'apply' %}">
+                <button style="padding: 10px 20px; background-color: #17a2b8; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    Apply for Membership
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align: center; padding: 12px; background-color: #e2edf3; color: #333;">
+        © 2025 Together Culture. All rights reserved.
+    </div>
+
 </body>
 </html>

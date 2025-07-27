@@ -1,93 +1,121 @@
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f2f2f2;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9fafb;
+    color: #222;
 }
 
-.header, .footer {
-    background-color: #1a1a1a;
-    color: white;
-    text-align: center;
-    padding: 1.2rem;
-    font-weight: bold;
-}
-
-.footer small {
-    font-size: 0.85rem;
-    display: block;
-    margin-top: 0.3rem;
-}
-
-.login-container {
-    max-width: 420px;
-    margin: 3rem auto;
-    background-color: white;
-    padding: 2rem;
-    border-radius: 15px;
-    border: 2px solid black;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.login-container h2 {
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-}
-
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 0.75rem;
-    margin: 0.5rem 0 1.2rem 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    background-color: #eef1f8;
-    font-size: 0.95rem;
-    transition: box-shadow 0.2s ease;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
-}
-
-.login-actions {
+.top-nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.forgot-password {
-    font-size: 0.9rem;
+.brand {
+    font-size: 1.3rem;
     font-weight: bold;
+    color: #1a1a1a;
+}
+
+.nav-buttons a {
+    margin-left: 1rem;
     text-decoration: none;
-    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
 }
 
-button {
-    background-color: black;
+.btn-primary {
+    background-color: #2563eb;
     color: white;
-    padding: 0.6rem 1.2rem;
     border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #333;
+.btn-outline {
+    border: 1px solid #2563eb;
+    color: #2563eb;
+    background-color: transparent;
 }
 
-hr {
-    border: none;
-    border-top: 1px solid #000;
-    margin: 2rem 0 1.5rem;
-}
-
-.register-section {
+.main-container {
+    max-width: 480px;
+    margin: 60px auto;
     text-align: center;
-    font-weight: bold;
+    padding: 0 1rem;
+}
+
+.headline {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtext {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.form-box {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.form-box label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 500;
+}
+
+.form-box input[type="text"],
+.form-box input[type="password"] {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.forgot {
+    font-size: 0.85rem;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+input[type="submit"].btn-primary {
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.full {
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-top: 1rem;
+}
+
+.register-prompt {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.85rem;
+    color: #999;
 }
